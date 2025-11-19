@@ -8,6 +8,9 @@ class LearnFlutterPage extends StatefulWidget {
 }
 
 class _LearnFlutterPageState extends State<LearnFlutterPage> {
+
+  bool isSwitch = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,6 +44,35 @@ class _LearnFlutterPageState extends State<LearnFlutterPage> {
           OutlinedButton(onPressed: (){
             debugPrint('Elevated Button');
           }, child: Text('Elevated Button X'),),
+          TextButton(onPressed: (){
+            debugPrint('Elevated Button');
+          }, child: Text('Text Button X'),),
+          GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: (){
+              debugPrint('This is row widget');
+            },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: const [
+                Icon(
+                  Icons.local_fire_department, 
+                  color: Colors.blue,
+                ),
+                Text('Row widget'),
+                Icon(
+                  Icons.local_fire_department,
+                  color: Colors.blue,
+                )
+              ],
+            ),
+          ),
+          Switch(value: isSwitch, onChanged: (bool newBool) {
+            setState(() {
+              isSwitch = newBool;
+            });
+            
+          })
         ],
       ),
     );
