@@ -10,6 +10,7 @@ class LearnFlutterPage extends StatefulWidget {
 class _LearnFlutterPageState extends State<LearnFlutterPage> {
 
   bool isSwitch = false;
+  bool? isCheck = false;
 
   @override
   Widget build(BuildContext context) {
@@ -38,12 +39,20 @@ class _LearnFlutterPageState extends State<LearnFlutterPage> {
             width: double.infinity,
             child: const Center(child: Text('This is a Text', style: TextStyle(color: Colors.white),)),
           ),
-          ElevatedButton(onPressed: (){
-            debugPrint('Elevated Button');
-          }, child: Text('Elevated Button X'),),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: isSwitch ? Colors.blue : Colors.green
+            ),
+            onPressed: (){
+              debugPrint('Elevated Button');
+            }, 
+            child: Text('Elevated Button X'),
+          ),
+
           OutlinedButton(onPressed: (){
             debugPrint('Elevated Button');
           }, child: Text('Elevated Button X'),),
+
           TextButton(onPressed: (){
             debugPrint('Elevated Button');
           }, child: Text('Text Button X'),),
@@ -70,8 +79,12 @@ class _LearnFlutterPageState extends State<LearnFlutterPage> {
           Switch(value: isSwitch, onChanged: (bool newBool) {
             setState(() {
               isSwitch = newBool;
+            });  
+          }),
+          Checkbox(value: isCheck, onChanged: (bool? newBool){
+            setState(() {
+              isCheck = newBool;
             });
-            
           })
         ],
       ),
